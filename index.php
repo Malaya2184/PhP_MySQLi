@@ -82,6 +82,32 @@
 // echo '<br>';
 // print_r($car['inexpensive']);
 
+    /*_____________________________________________
+     |                                             |
+     |                                             |
+     |         array_keys and array_values         |
+     |    create an array and put those values     |
+     |_____________________________________________|
+      */
+// $car = array("expensive"=>array('audi','bmw','mercedese'),
+//             "inexpensive"=>array('toyota','honda','tata'));
+// print_r(array_keys($car));
+// echo '<br>';
+// print_r(array_values($car));
+// echo '<br>';
+    /*_____________________________________________
+     |                                             |
+     |                                             |
+     |             Important V V IMP               |
+     |                                             |
+     |_____________________________________________|
+      */
+
+// print(array_keys($car)[0]);
+// echo '<br>';
+// print(array_values($car)[0][0]);
+// echo '<br>';
+
 // //substr
 // $blog = 'Your Blog is Excellent!';
 // print(substr($blog, 0, 4));
@@ -147,7 +173,13 @@
 
 
 
-//is_string ( "Lucky Number 7" )
+//is_string ( "Lucky Number 7" );
+//strlen( "Lucky Number 7" );
+// echo str_word_count("Hello world! this is malaya");
+
+//strpos(string, searchvalue);
+// echo strpos("I love php, I love php too!",   "php");
+// echo ucwords("hello world"); // Hello World!
 
 //strstr()
 //The function strstr() can be used to find a string or character match within a longer string. This function can be used to find a string inside a string, including finding a string containing only a single character.
@@ -158,6 +190,69 @@
 // echo a;
 
 
+
+// require will produce a fatal error (E_COMPILE_ERROR) and stop the script
+// include will only produce a warning (E_WARNING) and the script will continue
+
+// include "myfunction.php";
+// require "myfunction.php";
+// echo('hiiiiiiiiii');
+// echo "<br>";
+// print(add(5,6));
+
+
+
+// math functions in php
+
+// absolute value i.e abs
+// echo(abs(6.7)."<br>");
+// echo(abs(-7.7) . "<br>");
+
+// ceil function rounds the fraction
+// echo (ceil(3.3)."<br/>");// 4  
+// echo (ceil(7.333)."<br/>");// 8  
+// echo (ceil(-4.8)."<br/>");// -4  
+
+
+// floor function rounds the fraction to lower one
+// echo (floor(3.3)."<br/>");// 3  
+// echo (floor(7.333)."<br/>");// 7  
+// echo (floor(-4.8)."<br/>");// -5  
+
+//sqrt square rrot
+// echo (sqrt(16)."<br/>");// 4  
+// echo (sqrt(25)."<br/>");// 5  
+// echo (sqrt(7)."<br/>");// 2.6457513110646  
+
+
+
+//The decbin() function converts decimal number into binary. It returns binary number as a string.
+// echo (decbin(2)."<br/>");// 10  
+// echo (decbin(10)."<br/>");// 1010  
+// echo (decbin(22)."<br/>");// 10110  
+
+//The dechex() function converts decimal number into hexadecimal. It returns hexadecimal representation of given number as a string.
+// echo (dechex(2)."<br/>");// 2  
+// echo (dechex(10)."<br/>");// a  
+// echo (dechex(22)."<br/>");// 16  
+
+
+//The decoct() function converts decimal number into octal. It returns octal representation of given number as a string.
+// echo (decoct(2)."<br/>");// 2  
+// echo (decoct(10)."<br/>");// 12  
+// echo (decoct(22)."<br/>");// 26 
+
+//The base_convert() function allows you to convert any base number to any base number. For example, you can convert hexadecimal number to binary, hexadecimal to octal, binary to octal, octal to hexadecimal, binary to decimal etc.
+//echo (base_convert($n1,10,2)."<br/>");// 1010 
+
+// Check whether a value is 'not-a-number':
+// echo is_nan(200) . "<br>";
+
+// The acos() function in PHP is used to find the arc cosine of a number in radians.
+// We already have discussed about PHP | cos() Function. The acos() function is the complementary function of cos().
+// echo is_nan(acos(1.01));
+
+// echo round(2.4) . "<br>";
     ?>
 </body>
 </html>
