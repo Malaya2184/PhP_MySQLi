@@ -490,6 +490,23 @@
 // or die("Unable to connect to given site.");
 
 //===================================
+
+$servername = "localhost";
+$usename= "root";
+$password= "";
+$table ="spider_db";
+
+$con = mysqli_connect($servername, $usename, $password,$table);
+
+//it can be done by thus also
+// $con = new mysqli($servername, $usename, $password,$table);
+
+if($con){
+    echo "connection sucessful";
+}
+else{
+    echo " connection not sucessful";
+}
     ?>
 </body>
 </html>
