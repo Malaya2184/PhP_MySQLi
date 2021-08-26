@@ -369,6 +369,127 @@
 // arsort() - sort associative arrays in descending order, according to the value
 // krsort() - sort associative arrays in descending order, according to the key
 
+
+// echo "Oct 3, 1975 was on a ".date("l", mktime(0,0,0,10,3,1975));
+//Oct 3, 1975 was on a Friday
+
+//super globals in php
+// $GLOBALS
+// $_SERVER
+// $_REQUEST
+// $_POST
+// $_GET
+// $_FILES
+// $_ENV
+// $_COOKIE
+// $_SESSION
+
+
+
+// $GLOBALS
+// $x = 75;
+// $y = 25;
+ 
+// function addition() {
+//   $GLOBALS['z'] = $GLOBALS['x'] + $GLOBALS['y'];
+// }
+ 
+// addition();
+// echo $z;
+
+
+//post
+
+
+    ?>
+
+<!-- HTML part of the form -->
+    <!-- <form action="index.php" method="post">
+        Name: <input type="text" name="name"><br>
+        E-mail: <input type="text" name="email"><br>
+        <input type="submit">
+    </form> -->
+    
+    <?php
+
+
+//The isset() function checks whether a variable is set, which means that it has to be declared and is not NULL.
+
+// This function returns true if the variable exists and is not NULL, otherwise it returns false.
+
+// Note: If multiple variables are supplied, then this function will return true only if all of the variables are set.
+
+// Tip: A variable can be unset with the unset() function.
+    //The PHP superglobals $_GET and $_POST are used to collect form-data.
+    // if(isset($_POST) ){
+        // echo $_POST['name' ].'  your form has submited sucessfully';
+    // };
+
+//$_POST annd $_GET receives the data from the form in the form of associative array in GET method data will be visible in the url
+    /*_____________________________________________
+     |                                             |
+     |                                             |
+     |             Important V V IMP               |
+     |                                             |
+     |_____________________________________________|
+      */
+// echo "<br>";
+// print_r($_POST);
+// echo "<br>";
+// print_r([$_POST]);
+// echo "<br>";
+// print_r([[$_POST]]);
+
+//like this-
+// Array (  
+//     [name] => malaya 
+//     [email] => ms@gmail.com  )
+
+
+
+
+
+
+//The isset() function checks whether a variable is set, which means that it has to be declared and is not NULL.
+
+// This function returns true if the variable exists and is not NULL, otherwise it returns false.
+
+// Note: If multiple variables are supplied, then this function will return true only if all of the variables are set.
+
+// Tip: A variable can be unset with the unset() function.
+
+//===================database part========================
+
+
+// $servername = "localhost";
+// $usename= "root";
+// $password= "";
+// $con = mysqli_connect($servername, $usename, $password);
+// $str = "CREATE database spider_db";
+// $result = mysqli_query($con,$str);
+// var_dump($result);
+
+// //if db already exist then it will throw the error
+// if(!$result){
+//     die("not created sucessful <br>".mysqli_error($con));
+// }
+// else{
+//     print("unsucessful");
+// }
+
+
+//Here, die() function ends the script with a message "codeends here "
+// die("code ends here");
+// print("hello world");
+
+
+// $site = "";
+  
+// // open url else die (exit)
+// fopen($site, "r")
+// or die("Unable to connect to given site.");
+
+//===================================
     ?>
 </body>
 </html>
