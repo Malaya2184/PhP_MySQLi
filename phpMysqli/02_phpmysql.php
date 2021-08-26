@@ -106,7 +106,7 @@ class DBConnection{
     function db_get_data2($str){ 
       $rows=array();
       $result=$this->con->query($str);
-      //only returns the associate array now MYSQLI_ROW type
+      //only returns the associate array not MYSQLI_NUM type
       $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
       // print_r($rows);
       return $rows;
@@ -129,7 +129,87 @@ class DBConnection{
       return $row;
     }
 
+    
+    function db_update($table,$columns, $values, $condition=""){
+      if($table=="" || $columns=="" || $values=="" || count($columns) != count($values)){
+        return false;
+      }
+      $updatestr="";
+      for($i=0;$i<count($columns);$i++){
+        if($updatestr==""){
+          $updatestr=" SET ".$columns[$i]." = '".$this->con->real_escape_string($values[$i])."'";
+        }else{
+          $updatestr.=" , ".$columns[$i]." = '".$this->con->real_escape_string($values[$i])."'";
+        }
+      }
+      if($condition !=""){
+        $condition=" WHERE ".$condition;
+      }
+      $sql = "UPDATE ".$table." ".$updatestr.$condition;
+      //print $sql;
+      if($this->con->query($sql)){
+        return $this->con->affected_rows;
+      }else{
+        return false;
+      }
+    }
 
+
+    function prepare_param($str){
+      return $this->con->real_escape_string($str);
+    }
+
+
+    function db_delete($table,$condition=""){
+      if($table=="")return false;
+      if($condition !=""){
+        $condition=" WHERE ".$condition;
+      }
+      $sql = "DELETE FROM ".$table." ".$condition;
+      if($this->con->query($sql)){
+        return $this->con->affected_rows;
+      }else{
+        return false;
+      }
+    }
+   
+    function db_multi_update($table,$values, $columns=array()){
+      if($table=="" || $values=="")return false;
+      $columnstr="";
+      if(count($columns)>0){
+        $columnstr=implode(",", $columns);
+        $columnstr="(".$columnstr.")";
+      }
+      $sql = "INSERT INTO ".$table." ".$columnstr." VALUES ";
+      $valuesArr = array();
+      foreach($values as $k=>$vald){
+        $valuestr = '';
+        foreach($vald as $key=>$val){
+          if($valuestr !=""){
+            $valuestr.=", '".$this->con->real_escape_string($val)."'";
+          }else{
+            $valuestr="'".$this->con->real_escape_string($val)."'";
+          }
+        }
+        $valuesArr[] = '('.$valuestr.')';
+      }
+      $valuesData = implode(',',$valuesArr);
+      $sql .= $valuesData;
+      foreach($columns as $kv=>$value){
+        if($kv != count($columns)-1){
+          if($kv==0)
+            $sql .= ' ON DUPLICATE KEY UPDATE '.$value.' = VALUES('.$value.'),';
+          else
+            $sql .= ' '.$value.' = VALUES('.$value.'),';				
+        }else
+          $sql .= ' '.$value.' = VALUES('.$value.')';
+      }
+      if($this->con->query($sql)){
+        return $this->con->insert_id;
+      }else{
+        return false;
+      }
+    }
 }
 
 
@@ -186,8 +266,8 @@ if ($dbcon_result -> connect_errno) {
 // $result = $dbcon->db_multi_insert($table_name,$table_columns,$table_values);
 // print($result);
 
-$str = "SELECT * FROM employee";
-$dbcon->db_get_Details($str);
-$data= $dbcon->db_get_data2($str);
-print_r($data);
+// $str = "SELECT * FROM employee";
+// $dbcon->db_get_Details($str);
+// $data= $dbcon->db_get_data2($str);
+// print_r($data);
 ?>
